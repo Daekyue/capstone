@@ -58,6 +58,11 @@ jobs:
         path: ./app/build/outputs/bundle/release/app-release.aab
         retention-days: 14
 
+    - name: Deploy
+        run: ./gradlew assembleDebug appDistributionUploadDebug
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
     # Upload APK
     - name: Upload a Build APK Artifact
       uses: actions/upload-artifact@v3.0.0

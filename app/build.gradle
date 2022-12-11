@@ -1,24 +1,28 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.appdistribution'
     //id 'kotlin-android'
 }
 // Keystore Security
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+def keystorePropertiesFile = rootProject.file("app/signing/keystore.properties")
+
 
 android {
     compileSdk 33
 
     signingConfigs {
         release {
+            def keystoreProperties = new Properties()
+            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
             storeFile file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
         }
     }
+
     defaultConfig {
         applicationId "com.akj.sns_project"
         minSdk 21
@@ -31,6 +35,9 @@ android {
 
     buildTypes {
         release {
+            firebaseAppDistribution {
+                groups = "QA"
+            }
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -44,6 +51,7 @@ android {
     }
     namespace 'com.akj.sns_project'
 }
+
 
 dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0' // Circle ImageView
