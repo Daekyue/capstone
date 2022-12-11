@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="# 해시태그 # 해시태그"
-                    android:textColor="#393E46"
+                    android:textColor="#AAAAAA"
                     android:textSize="16sp" />
             </LinearLayout>
 

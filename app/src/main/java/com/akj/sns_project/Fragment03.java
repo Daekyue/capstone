@@ -66,6 +66,7 @@ public class Fragment03 extends Fragment {
 
         //처음화면
         getParentFragmentManager().beginTransaction().add(R.id.frameLayout, white).commit(); //FrameLayout에 fragment.xml 띄우기
+        whiteBlackNavigationView.setSelectedItemId(R.id.item_white_fragment);
 
         timer.setVisibility(timer.GONE);
 
@@ -129,6 +130,7 @@ public class Fragment03 extends Fragment {
 
             @Override
             public void onFinish() {  }
+
         }.start();
         
         timerRunning = true;
