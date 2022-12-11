@@ -5,6 +5,7 @@
     android:id="@+id/searchmovie"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".activity.MainActivity">
 
     <FrameLayout
@@ -14,8 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -31,8 +31,7 @@
                     android:layout_height="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:queryHint = "CDIDDJFkL:SDFJS:DHKLFSDK:FSFJKL:D"
-                    />
+                    app:queryHint="CDIDDJFkL:SDFJS:DHKLFSDK:FSFJKL:D" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/PosterList"
