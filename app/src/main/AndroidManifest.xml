@@ -20,7 +20,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +39,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.AdminActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.BoardActivity" />
         <activity android:name=".activity.MypageActivity" />
         <activity android:name=".activity.LoginActivity" />
