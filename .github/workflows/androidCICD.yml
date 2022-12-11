@@ -22,9 +22,7 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      
-      
-      
+
     - name: Create google-services
       run: |
         mkdir ./app/src/release
@@ -68,11 +66,3 @@ jobs:
         path: ./app/build/outputs/apk/release/app-release.apk
         retention-days: 14
     
-    - name: Deploy
-      uses: w9jds/firebase-action@master
-      with:
-        args: deploy --only hosting
-      env:
-          CI: true
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: ${{ steps.vars.outputs.PROJECT_ID }}
