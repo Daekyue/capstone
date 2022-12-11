@@ -37,7 +37,6 @@ public class LoginActivity extends BasicActivity implements GoogleApiClient.OnCo
 
     //private EditText emailTextView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {    // 로그인 액티비티가 실행되었을 때
         super.onCreate(savedInstanceState);
