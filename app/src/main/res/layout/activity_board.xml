@@ -31,7 +31,7 @@
                     android:layout_height="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:queryHint = "영화 제목을 입력하세요"
+                    app:queryHint = "CDIDDJFkL:SDFJS:DHKLFSDK:FSFJKL:D"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
