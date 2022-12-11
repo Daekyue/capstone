@@ -151,7 +151,7 @@ public class MovieInfo extends Fragment {
 
 
         textViewTitle.setText(title);
-        textViewTitle.setTextColor(Color.parseColor("#181D31"));
+        textViewTitle.setTextColor(Color.parseColor("#AAAAAA"));
         textViewOverView.setText(overView);
         textViewReleaseDate.setText(releaseDate);
         Glide.with(getActivity()).load(posterURL).into(imageviewPoster);
@@ -193,15 +193,15 @@ public class MovieInfo extends Fragment {
                 addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast toast = Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT);
-                        toast.show();
+                        //Toast toast = Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT);
+                        //toast.show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast toast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
-                        toast.show();
+                        //Toast toast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                        //toast.show();
                     }
                 });
 
@@ -217,8 +217,8 @@ public class MovieInfo extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 if (savelocationforReply.equals(document.getData().get("saveLocation").toString())) {
-                                    Toast toast = Toast.makeText(getActivity(), "리사이클러뷰", Toast.LENGTH_SHORT);
-                                    toast.show();
+                                    //Toast toast = Toast.makeText(getActivity(), "리사이클러뷰", Toast.LENGTH_SHORT);
+                                    //toast.show();
                                     replyList.add(new ReplyInfo(
                                             document.getData().get("contents").toString(),
                                             new Date(document.getDate("createdAt").getTime()),
@@ -306,8 +306,8 @@ public class MovieInfo extends Fragment {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             Log.d(TAG, document.getId() + " => " + document.getData());
                                             if (savelocationforReply.equals(document.getData().get("saveLocation").toString())) {
-                                                Toast toast = Toast.makeText(getActivity(), "리사이클러뷰", Toast.LENGTH_SHORT);
-                                                toast.show();
+                                                //Toast toast = Toast.makeText(getActivity(), "리사이클러뷰", Toast.LENGTH_SHORT);
+                                                //toast.show();
                                                 replyList.add(new ReplyInfo(
                                                         document.getData().get("contents").toString(),
                                                         new Date(document.getDate("createdAt").getTime()),
@@ -366,15 +366,15 @@ public class MovieInfo extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast toast = Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT);
-                        toast.show();
+                        //Toast toast = Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT);
+                        //toast.show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast toast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
-                        toast.show();
+                        //Toast toast = Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT);
+                        //toast.show();
                     }
                 });
     }
