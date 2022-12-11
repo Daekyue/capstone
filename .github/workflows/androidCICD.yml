@@ -69,7 +69,7 @@ jobs:
         retention-days: 14
     
     - name: Deploy
-      uses: realcold0/firebase-action@master
+      uses: w9jds/firebase-action@master
       with:
         args: deploy --only hosting
       env:
