@@ -174,6 +174,7 @@ public class BoardActivity extends BasicActivity {
         public void onModify(int position) {
             myStartActivity(WritePostActivity.class, postList.get(position));
         }   // 게시글 수정 기능_대규
+
         @Override
         public void onGoBlack(int position){
             // 검은색 게시판에 업로드
@@ -217,7 +218,7 @@ public class BoardActivity extends BasicActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             successCount--;
-                            storeUploader(id);
+                            storeUploader_goblack(id);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -227,7 +228,7 @@ public class BoardActivity extends BasicActivity {
                     });
                 }
             }
-            storeUploader(id);
+            storeUploader_goblack(id);
         }
     };
 
@@ -295,6 +296,26 @@ public class BoardActivity extends BasicActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             startToast("게시글을 삭제하지 못하였습니다.");
+                        }
+                    });
+        }
+    }
+
+    private void storeUploader_goblack(String id){
+        if(successCount == 0) {
+            firebaseFirestore.collection("posts").document(id)
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            startToast("게시글이 검은색 게시판으로 이동되었습니다.");
+                            postsUpdate();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
                         }
                     });
         }
