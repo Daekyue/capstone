@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.appdistribution'
     //id 'kotlin-android'
 }
 // Keystore Security
@@ -34,6 +35,9 @@ android {
 
     buildTypes {
         release {
+            firebaseAppDistribution {
+                groups = "QA"
+            }
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -60,6 +64,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-core:21.1.1' // 파이어베이스 코어 추가
     implementation 'com.google.firebase:firebase-auth:21.1.0' // 파이어베이스 인증 추가
+
     implementation platform('com.google.firebase:firebase-bom:30.3.2')
     implementation 'com.google.android.gms:play-services-auth:20.4.0'// 파이어베이스 인증2
     implementation 'androidx.navigation:navigation-fragment:2.5.3'

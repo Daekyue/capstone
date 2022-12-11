@@ -57,11 +57,8 @@ jobs:
         retention-days: 14
         
     - name: Deploy
-      uses: w9jds/firebase-action@master
-      with:
-        args: deploy --only hosting
+      run: ./gradlew assembleDebug appDistributionUploadDebug
       env:
-          CI: true
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
     # Upload APK
