@@ -55,6 +55,14 @@ jobs:
         # A file, directory or wildcard pattern that describes what to upload
         path: ./app/build/outputs/bundle/release/app-release.aab
         retention-days: 14
+        
+    - name: Deploy
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only hosting
+      env:
+          CI: true
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
     # Upload APK
     - name: Upload a Build APK Artifact
