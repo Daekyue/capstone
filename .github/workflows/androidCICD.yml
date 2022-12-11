@@ -33,7 +33,7 @@ jobs:
     - name: Create KeyStore File and Properties
       run: |
         mkdir ./app/signing
-        echo '${{ secrets.KU_RING_KEY_STORE_JKS }}' | base64 -d > ./app/signing/CICD2.jks
+        echo '${{ secrets.CI_CD2_JKS }}' | base64 -d > ./app/signing/CICD2.jks
         echo '${{ secrets.KEY_STORE_PROPERTIES }}' > ./app/signing/keystore.properties
 
     # Build APK Release
