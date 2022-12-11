@@ -29,6 +29,12 @@ jobs:
       run: |
         mkdir ./app/src/release
         echo '${{ secrets.GOOGLE_SERVICES_JSON_RELEASE }}' > ./app/src/release/google-services.json
+    
+    - name: Create KeyStore File and Properties
+      run: |
+        mkdir ./app/signing
+        echo '${{ secrets.KU_RING_KEY_STORE_JKS }}' | base64 -d > ./app/signing/CICD2.jks
+        echo '${{ secrets.KEY_STORE_PROPERTIES }}' > ./app/signing/keystore.properties
 
     # Build APK Release
     - name: Build release Apk
