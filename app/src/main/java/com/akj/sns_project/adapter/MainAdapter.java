@@ -24,8 +24,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.akj.sns_project.Fragment03;
 import com.akj.sns_project.PostInfo;
 import com.akj.sns_project.R;
 import com.akj.sns_project.activity.PostActivity;
@@ -286,51 +288,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         // 이동 관련 동작
         int moveCount = unlikenum - likenum;
 
-        if(moveCount > 5){
-            // 검은색 게시판에 업로드
-            // 게시글 가져와서 map에 넣기
-            DocumentReference post = firebaseFirestore.collection("blackposts").document();
-
-            Map<String, Object> data = new HashMap<>();
-            data.put("title", mDataset.get(position).getTitle());
-            data.put("contents", mDataset.get(position).getContents());
-            data.put("publisher", mDataset.get(position).getPublisher());
-            data.put("createdAt", mDataset.get(position).getCreatedAt());
-            data.put("id", mDataset.get(position).getId());
-            data.put("like", mDataset.get(position).getlike());
-            data.put("unlike", mDataset.get(position).getUnlike());
-            data.put("saveLocation", mDataset.get(position).getsaveLocation());
-
-            // postInfo에 새로 추가된 데이터
-            data.put("favorites", mDataset.get(position).getFavorites());
-            data.put("unfavorites", mDataset.get(position).getUnfavorites());
-            data.put("hashtag", mDataset.get(position).getFavorites());
-
-
-            post.set(data);
-
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-            // 해당 게시글 흰색 게시판에서 삭제하기
-            db.collection("posts").document(mDataset.get(position).getsaveLocation())
-                    .delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                        }
-                    });
-
+        if (moveCount >= 5) {
+            onPostListener.onGoBlack(position);
         }
-
-        // 실시간으로 이동 반영 x : 게시판 다시 클릭해서 다시 로드하면
-        // 그때 이동된 정보들 반영 됨
     }
 
     @Override
@@ -419,8 +379,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
                     case R.id.goBlack:
                         if (userUid.equals(ADMIN_DK) || userUid.equals(ADMIN_JB) || userUid.equals(ADMIN_JY) || userUid.equals(ADMIN_SH) || userUid.equals(ADMIN_YJ)) {
                             onPostListener.onGoBlack(position); //인터페이스의 onGoBlack를 이용
-                        }
-                        else{
+                        } else {
                             Toast.makeText(v.getContext(), "관리자만 사용할 수 있는 기능입니다", Toast.LENGTH_SHORT).show();
                         }
 
