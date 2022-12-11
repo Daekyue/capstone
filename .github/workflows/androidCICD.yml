@@ -67,3 +67,12 @@ jobs:
         # A file, directory or wildcard pattern that describes what to upload
         path: ./app/build/outputs/apk/release/app-release.apk
         retention-days: 14
+    
+    - name: Deploy
+      uses: realcold0/firebase-action@master
+      with:
+        args: deploy --only hosting
+      env:
+          CI: true
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: ${{ steps.vars.outputs.PROJECT_ID }}
